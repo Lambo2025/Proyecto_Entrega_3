@@ -20,7 +20,7 @@ import uniandes.edu.co.hoteles.dto.ProductoDTO;
 @RequestMapping("/producto")
 public class ProductoAPI {
 
-    @Autowired
+  /*  @Autowired
     private ProductoService service;
 
     @PostMapping
@@ -71,6 +71,6 @@ public class ProductoAPI {
             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
+    }*/
 
 }

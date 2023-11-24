@@ -23,77 +23,77 @@ import uniandes.edu.co.hoteles.dto.ServicioDTO;
 @RequestMapping("/servicio")
 public class ServicioAPI {
 
-    @Autowired
-    private ServicioService service;
+    // @Autowired
+    // private ServicioService service;
 
-    @PostMapping
-    public ResponseEntity<Void> create(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ServicioDTO servicio) {
+    // @PostMapping
+    // public ResponseEntity<Void> create(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ServicioDTO servicio) {
 
-        try {
-            service.create(servicio);
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         service.create(servicio);
+    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @PutMapping
-    public ResponseEntity<Void> update(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ServicioDTO servicio) {
+    // @PutMapping
+    // public ResponseEntity<Void> update(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ServicioDTO servicio) {
 
-        try {
-            if (service.update(servicio) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         if (service.update(servicio) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(HttpServletRequest req,
-            HttpServletResponse res,
-            @PathVariable Long id) {
+    // @DeleteMapping(value = "/{id}")
+    // public ResponseEntity<Void> delete(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @PathVariable Long id) {
 
-        try {
+    //     try {
 
-            if (service.delete(id) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
+    //         if (service.delete(id) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<ServicioDTO>> findAll(HttpServletRequest req,
-            HttpServletResponse res) {
+    // @GetMapping(value = "/all")
+    // public ResponseEntity<List<ServicioDTO>> findAll(HttpServletRequest req,
+    //         HttpServletResponse res) {
 
-        try {
+    //     try {
 
-            List<ServicioDTO> servicios =  service.findAll();
+    //         List<ServicioDTO> servicios =  service.findAll();
 
-            if (!servicios.isEmpty()) {
-                return new ResponseEntity<List<ServicioDTO>>( servicios, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<List<ServicioDTO>>(HttpStatus.NO_CONTENT);
-            }
+    //         if (!servicios.isEmpty()) {
+    //             return new ResponseEntity<List<ServicioDTO>>( servicios, HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<List<ServicioDTO>>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<List<ServicioDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<List<ServicioDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
 }

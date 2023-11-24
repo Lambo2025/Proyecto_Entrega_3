@@ -23,98 +23,98 @@ import uniandes.edu.co.hoteles.dto.ReservaDTO;
 @RequestMapping("/reserva")
 public class ReservaAPI {
 
-    @Autowired
-    private ReservaService service;
+    // @Autowired
+    // private ReservaService service;
 
-    @PostMapping
-    public ResponseEntity<Void> create(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ReservaDTO reserva) {
+    // @PostMapping
+    // public ResponseEntity<Void> create(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ReservaDTO reserva) {
 
-        try {
-            service.create(reserva);
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         service.create(reserva);
+    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @PutMapping
-    public ResponseEntity<Void> update(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ReservaDTO reserva) {
+    // @PutMapping
+    // public ResponseEntity<Void> update(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ReservaDTO reserva) {
 
-        try {
-            if (service.update(reserva) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         if (service.update(reserva) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(HttpServletRequest req,
-            HttpServletResponse res,
-            @PathVariable Long id) {
+    // @DeleteMapping(value = "/{id}")
+    // public ResponseEntity<Void> delete(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @PathVariable Long id) {
 
-        try {
+    //     try {
 
-            if (service.delete(id) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
+    //         if (service.delete(id) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<ReservaDTO>> findAll(HttpServletRequest req,
-            HttpServletResponse res) {
+    // @GetMapping(value = "/all")
+    // public ResponseEntity<List<ReservaDTO>> findAll(HttpServletRequest req,
+    //         HttpServletResponse res) {
 
-        try {
+    //     try {
 
-            List<ReservaDTO> reservas =  service.findAll();
+    //         List<ReservaDTO> reservas =  service.findAll();
 
-            if (!reservas.isEmpty()) {
-                return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
-            }
+    //         if (!reservas.isEmpty()) {
+    //             return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
 
-    @GetMapping(value = "/findByUser/{userDocument}")
-    public ResponseEntity<List<ReservaDTO>> findByUser(HttpServletRequest req,
-            HttpServletResponse res, @PathVariable String userDocument) {
+    // @GetMapping(value = "/findByUser/{userDocument}")
+    // public ResponseEntity<List<ReservaDTO>> findByUser(HttpServletRequest req,
+    //         HttpServletResponse res, @PathVariable String userDocument) {
 
-        try {
+    //     try {
 
-            List<ReservaDTO> reservas =  service.findBookingByUserDocument(userDocument);
+    //         List<ReservaDTO> reservas =  service.findBookingByUserDocument(userDocument);
 
-            if (!reservas.isEmpty()) {
-                return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
-            }
+    //         if (!reservas.isEmpty()) {
+    //             return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
 }

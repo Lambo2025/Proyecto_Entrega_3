@@ -21,57 +21,57 @@ import uniandes.edu.co.hoteles.dto.TipoPlanConsumoDTO;
 @RequestMapping("/tipoPlanconsumo")
 public class TipoPlanConsumoAPI {
 
-    @Autowired
-    private TipoPlanConsumoService service;
+    // @Autowired
+    // private TipoPlanConsumoService service;
 
-    @PostMapping
-    public ResponseEntity<Void> create(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody TipoPlanConsumoDTO tipoPlanConsumo) {
+    // @PostMapping
+    // public ResponseEntity<Void> create(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody TipoPlanConsumoDTO tipoPlanConsumo) {
 
-        try {
-            service.createTipoPlanConsumo(tipoPlanConsumo);
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         service.createTipoPlanConsumo(tipoPlanConsumo);
+    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @PutMapping
-    public ResponseEntity<Void> update(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody TipoPlanConsumoDTO tipoPlanConsumo) {
+    // @PutMapping
+    // public ResponseEntity<Void> update(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody TipoPlanConsumoDTO tipoPlanConsumo) {
 
-        try {
-            if (service.updateTipoPlanConsumo(tipoPlanConsumo) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         if (service.updateTipoPlanConsumo(tipoPlanConsumo) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(HttpServletRequest req,
-            HttpServletResponse res,
-            @PathVariable Long id) {
+    // @DeleteMapping(value = "/{id}")
+    // public ResponseEntity<Void> delete(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @PathVariable Long id) {
 
-        try {
+    //     try {
 
-            if (service.deleteTipoPlanConsumo(id) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
+    //         if (service.deleteTipoPlanConsumo(id) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
 }

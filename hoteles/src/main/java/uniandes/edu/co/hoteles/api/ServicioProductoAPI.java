@@ -20,57 +20,57 @@ import uniandes.edu.co.hoteles.dto.ServicioProductoDTO;
 @RequestMapping("/servicioProducto")
 public class ServicioProductoAPI {
 
-    @Autowired
-    private ServicioProductoService service;
+    // @Autowired
+    // private ServicioProductoService service;
 
-    @PostMapping
-    public ResponseEntity<Void> create(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ServicioProductoDTO servicioProducto) {
+    // @PostMapping
+    // public ResponseEntity<Void> create(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ServicioProductoDTO servicioProducto) {
 
-        try {
-            service.create(servicioProducto);
-            return new ResponseEntity<Void>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         service.create(servicioProducto);
+    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @PutMapping
-    public ResponseEntity<Void> update(HttpServletRequest req,
-            HttpServletResponse res,
-            @RequestBody ServicioProductoDTO servicioProducto) {
+    // @PutMapping
+    // public ResponseEntity<Void> update(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @RequestBody ServicioProductoDTO servicioProducto) {
 
-        try {
-            if (service.update(servicioProducto) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     try {
+    //         if (service.update(servicioProducto) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(HttpServletRequest req,
-            HttpServletResponse res,
-            @PathVariable Long id) {
+    // @DeleteMapping(value = "/{id}")
+    // public ResponseEntity<Void> delete(HttpServletRequest req,
+    //         HttpServletResponse res,
+    //         @PathVariable Long id) {
 
-        try {
+    //     try {
 
-            if (service.delete(id) != null) {
-                return new ResponseEntity<Void>(HttpStatus.OK);
-            } else {
-                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-            }
+    //         if (service.delete(id) != null) {
+    //             return new ResponseEntity<Void>(HttpStatus.OK);
+    //         } else {
+    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    //         }
 
-        } catch (Exception e) {
-            return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
 
-    }
+    // }
 
 }

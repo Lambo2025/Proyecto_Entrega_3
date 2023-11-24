@@ -1,13 +1,13 @@
 package uniandes.edu.co.hoteles.business.impl;
 
-import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uniandes.edu.co.hoteles.business.HabitacionService;
+import uniandes.edu.co.hoteles.document.HabitacionDocument;
 import uniandes.edu.co.hoteles.dto.HabitacionDTO;
-import uniandes.edu.co.hoteles.modelo.Habitacion;
 import uniandes.edu.co.hoteles.repository.HabitacionRepository;
 
 @Service
@@ -18,33 +18,25 @@ public class HabitacionServiceImpl implements HabitacionService {
 
     @Override
     public void create(HabitacionDTO habitacion) {
-        Habitacion h = new Habitacion(null, habitacion.getCapacidad(), habitacion.getTelevision().equals(true) ? 1L : 0L, habitacion.getMinibar().equals(true) ? 1L : 0L, habitacion.getCafetera().equals(true) ? 1L : 0L, habitacion.getCostoNoche(), habitacion.getNumero(), habitacion.getTipoHabitacionId());
-        repository.save(h);
+
+        HabitacionDocument habitacionDocument = new HabitacionDocument(UUID.randomUUID().toString(), habitacion.getCapacidad(),
+                habitacion.getTelevision().equals(true) ? 1L : 0L, habitacion.getMinibar().equals(true) ? 1L : 0L,
+                habitacion.getCafetera().equals(true) ? 1L : 0L, habitacion.getCostoNoche(), habitacion.getNumero(),
+                habitacion.getTipoHabitacionId());
+        repository.insert(habitacionDocument);
+
     }
 
     @Override
     public HabitacionDTO update(HabitacionDTO habitacion) {
-         Optional<Habitacion> sOptional = repository.findById(habitacion.getId());
-        if (sOptional.isPresent()) {
-            Habitacion h = new Habitacion(habitacion.getId(), habitacion.getCapacidad(), habitacion.getTelevision().equals(true) ? 1L : 0L, habitacion.getMinibar().equals(true) ? 1L : 0L, habitacion.getCafetera().equals(true) ? 1L : 0L, habitacion.getCostoNoche(), habitacion.getNumero(), habitacion.getTipoHabitacionId());
-            repository.save(h);
-            return habitacion;
-        } else {
-            return null;
-        }
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public Long delete(Long idHabitacion) {
-         Optional<Habitacion> sOptional = repository.findById(idHabitacion);
-        if (sOptional.isPresent()) {
-            repository.deleteById(idHabitacion);
-            return idHabitacion;
-        } else {
-            return null;
-        }
+    public Long delete(Long idhabitacion) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
-
-    
 }

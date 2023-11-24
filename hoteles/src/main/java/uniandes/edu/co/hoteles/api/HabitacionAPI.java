@@ -37,7 +37,7 @@ public class HabitacionAPI {
 
     }
 
-    @PutMapping
+   /* @PutMapping
     public ResponseEntity<Void> update(HttpServletRequest req,
             HttpServletResponse res,
             @RequestBody HabitacionDTO habitacion) {
@@ -71,6 +71,6 @@ public class HabitacionAPI {
             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
+    }*/
 
 }

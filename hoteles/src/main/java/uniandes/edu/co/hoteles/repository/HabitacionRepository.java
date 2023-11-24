@@ -1,9 +1,11 @@
 package uniandes.edu.co.hoteles.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import uniandes.edu.co.hoteles.modelo.Habitacion;
+import uniandes.edu.co.hoteles.document.HabitacionDocument;
 
-public interface HabitacionRepository extends CrudRepository<Habitacion, Long>{
+@Repository
+public interface HabitacionRepository extends MongoRepository<HabitacionDocument, String> {
     
 }

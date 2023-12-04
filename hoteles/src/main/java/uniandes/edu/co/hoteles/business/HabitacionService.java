@@ -1,5 +1,7 @@
 package uniandes.edu.co.hoteles.business;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import uniandes.edu.co.hoteles.dto.HabitacionDTO;
@@ -11,6 +13,8 @@ public interface HabitacionService {
     
     public HabitacionDTO update(HabitacionDTO habitacion);
 
-    public Long delete(Long idhabitacion);
+    public String delete(String idhabitacion);
+
+    public List<HabitacionDTO> findAll();
     
 }

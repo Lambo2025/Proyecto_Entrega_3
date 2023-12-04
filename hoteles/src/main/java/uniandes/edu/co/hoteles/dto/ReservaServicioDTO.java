@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ReservaServicioDTO {
 
-    private Long id;
+    private String id;
     private Long idReserva;
     private Long idServicio;
     private String Fecha;    

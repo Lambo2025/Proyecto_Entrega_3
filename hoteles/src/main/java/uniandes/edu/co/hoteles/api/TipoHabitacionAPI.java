@@ -1,9 +1,12 @@
 package uniandes.edu.co.hoteles.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,57 +23,79 @@ import uniandes.edu.co.hoteles.dto.TipoHabitacionDTO;
 @RequestMapping("/tipoHabitacion")
 public class TipoHabitacionAPI {
 
-    // @Autowired
-    // private TipoHabitacionService service;
+    @Autowired
+     private TipoHabitacionService service;
 
-    // @PostMapping
-    // public ResponseEntity<Void> create(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @RequestBody TipoHabitacionDTO tipoHabitacion) {
+     @PostMapping
+     public ResponseEntity<Void> create(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody TipoHabitacionDTO tipoHabitacion) {
 
-    //     try {
-    //         service.createTipoHabitacion(tipoHabitacion);
-    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         try {
+             service.createTipoHabitacion(tipoHabitacion);
+             return new ResponseEntity<Void>(HttpStatus.CREATED);
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
 
-    // @PutMapping
-    // public ResponseEntity<Void> update(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @RequestBody TipoHabitacionDTO tipoHabitacion) {
+     @PutMapping
+     public ResponseEntity<Void> update(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody TipoHabitacionDTO tipoHabitacion) {
 
-    //     try {
-    //         if (service.updateTipoHabitacion(tipoHabitacion) != null) {
-    //             return new ResponseEntity<Void>(HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    //         }
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         try {
+             if (service.updateTipoHabitacion(tipoHabitacion) != null) {
+                 return new ResponseEntity<Void>(HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+             }
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
 
-    // @DeleteMapping(value = "/{id}")
-    // public ResponseEntity<Void> delete(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @PathVariable Long id) {
+     @DeleteMapping(value = "/{id}")
+     public ResponseEntity<Void> delete(HttpServletRequest req,
+             HttpServletResponse res,
+             @PathVariable String id) {
 
-    //     try {
+         try {
 
-    //         if (service.deleteTipoHabitacion(id) != null) {
-    //             return new ResponseEntity<Void>(HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    //         }
+             if (service.deleteTipoHabitacion(id) != null) {
+                 return new ResponseEntity<Void>(HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+             }
 
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
+
+
+     @GetMapping(value = "/all")
+     public ResponseEntity<List<TipoHabitacionDTO>> findAll(HttpServletRequest req,
+             HttpServletResponse res) {
+
+         try {
+
+             List<TipoHabitacionDTO> tipoHabitaciones =  service.findAll();
+
+             if (!tipoHabitaciones.isEmpty()) {
+                 return new ResponseEntity<List<TipoHabitacionDTO>>(tipoHabitaciones, HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<List<TipoHabitacionDTO>>(HttpStatus.NO_CONTENT);
+             }
+
+         } catch (Exception e) {
+             return new ResponseEntity<List<TipoHabitacionDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+
+     }
+
 
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class TipoHabitacionDTO {
 
-    private Long id;
+    private String id;
     private String descripcion;
     private Long estado;
     

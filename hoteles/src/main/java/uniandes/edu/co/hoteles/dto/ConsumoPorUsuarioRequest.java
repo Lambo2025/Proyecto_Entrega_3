@@ -5,13 +5,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class UsuarioDTO {
+public class ConsumoPorUsuarioRequest {
 
-    private String id;
-    private Long rol;
-    private String tipoDocumento;
     private String numeroDocumento;
-    private String correo;
-    private String nombre;  
+    private String fechaInicial;
+    private String fechaFinal;    
     
 }

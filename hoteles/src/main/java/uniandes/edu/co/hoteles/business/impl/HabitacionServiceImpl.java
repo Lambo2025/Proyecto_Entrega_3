@@ -1,5 +1,8 @@
 package uniandes.edu.co.hoteles.business.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +32,51 @@ public class HabitacionServiceImpl implements HabitacionService {
 
     @Override
     public HabitacionDTO update(HabitacionDTO habitacion) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        Optional<HabitacionDocument> sOptional = repository.findById(habitacion.getId());
+       if (sOptional.isPresent()) {
+           HabitacionDocument h = sOptional.get(); 
+           h.setCafetera(habitacion.getCafetera().equals(true) ? 1L : 0L);
+           h.setCapacidad(habitacion.getCapacidad());
+           h.setCostoNoche(habitacion.getCostoNoche());
+           h.setMinibar(habitacion.getMinibar().equals(true) ? 1L : 0L);
+           h.setNumero(habitacion.getNumero());
+           h.setTelevision(habitacion.getTelevision().equals(true) ? 1L : 0L);
+           h.setTipoHabitacionId(habitacion.getTipoHabitacionId());
+           repository.save(h);
+           return habitacion;
+       } else {
+           return null;
+       }
+
     }
 
     @Override
-    public Long delete(Long idhabitacion) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public String delete(String idhabitacion) {
+        Optional<HabitacionDocument> hOptional = repository.findById(idhabitacion);
+        if (hOptional.isPresent()) {
+            repository.deleteById(idhabitacion);
+            return idhabitacion;
+
+            
+        } else {
+            return null;
+        }
     }
+
+
+    private HabitacionDTO entityToDTO(HabitacionDocument habitacion) {
+        HabitacionDTO dto = new HabitacionDTO(habitacion.getId(), habitacion.getCapacidad(), habitacion.getTelevision(), habitacion.getMinibar(), habitacion.getCafetera(), habitacion.getCostoNoche(), habitacion.getNumero(), habitacion.getTipoHabitacionId());
+        return dto;
+    }
+
+
+    @Override
+    public List<HabitacionDTO> findAll() {
+        List<HabitacionDTO> habitacionDTOs = new ArrayList<>();
+        repository.findAll().forEach(s -> habitacionDTOs.add(entityToDTO(s)));
+        return habitacionDTOs;
+    }
+
+
 
 }

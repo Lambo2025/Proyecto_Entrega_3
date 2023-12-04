@@ -3,40 +3,36 @@ package uniandes.edu.co.hoteles.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import uniandes.edu.co.hoteles.business.TipoPlanConsumoService;
-import uniandes.edu.co.hoteles.dto.TipoHabitacionDTO;
-import uniandes.edu.co.hoteles.dto.TipoPlanConsumoDTO;
+import uniandes.edu.co.hoteles.business.ConsumoService;
+import uniandes.edu.co.hoteles.dto.ConsumoDTO;
 
 @RestController
-@RequestMapping("/tipoPlanconsumo")
-public class TipoPlanConsumoAPI {
+@RequestMapping("/consumo")
+public class ConsumoAPI {
 
-    // @Autowired
-    // private TipoPlanConsumoService service;
+     @Autowired
+     private ConsumoService service;
 
-    // @PostMapping
-    // public ResponseEntity<Void> create(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @RequestBody TipoPlanConsumoDTO tipoPlanConsumo) {
+     @PostMapping
+     public ResponseEntity<Void> create(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody ConsumoDTO consumo) {
 
-    //     try {
-    //         service.createTipoPlanConsumo(tipoPlanConsumo);
-    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         try {
+             service.createConsumo(consumo);
+             return new ResponseEntity<Void>(HttpStatus.CREATED);
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
 
     // @PutMapping
     // public ResponseEntity<Void> update(HttpServletRequest req,

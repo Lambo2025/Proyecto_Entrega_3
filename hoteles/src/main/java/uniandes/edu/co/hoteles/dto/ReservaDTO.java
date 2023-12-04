@@ -8,11 +8,11 @@ import lombok.Data;
 public class ReservaDTO {
 
 
-    private Long Id;
+    private String Id;
     private String checkin;
     private String checkout;
     private Long num_personas;
-    private Long usuarioId;
+    private String usuarioId;
     private Long planconsumoId;
     private Long habitacionId;
 

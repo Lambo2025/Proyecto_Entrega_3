@@ -1,5 +1,7 @@
 package uniandes.edu.co.hoteles.business;
 
+import java.util.List;
+
 import uniandes.edu.co.hoteles.dto.TipoHabitacionDTO;
 
 public interface TipoHabitacionService {
@@ -8,6 +10,8 @@ public interface TipoHabitacionService {
     
     public TipoHabitacionDTO updateTipoHabitacion(TipoHabitacionDTO tipoHabitacion);
 
-    public Long deleteTipoHabitacion(Long idTipoHAbitacion);
+    public String deleteTipoHabitacion(String idTipoHAbitacion);
+
+    public List<TipoHabitacionDTO> findAll();
     
 }

@@ -7,11 +7,11 @@ import lombok.Data;
 @AllArgsConstructor
 public class HabitacionDTO {
 
-    private Long id;
+    private String id;
     private Long capacidad;
-    private Boolean television;
-    private Boolean minibar;
-    private Boolean cafetera;
+    private Long television;
+    private Long minibar;
+    private Long cafetera;
     private Double costoNoche;
     private String numero;
     private Long tipoHabitacionId;

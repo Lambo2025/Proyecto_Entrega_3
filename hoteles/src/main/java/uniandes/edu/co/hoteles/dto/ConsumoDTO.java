@@ -5,10 +5,14 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class TipoPlanConsumoDTO {
+public class ConsumoDTO {
 
-    private Long id;
+    private String id;
     private String descripcion;
     private Long estado;
+    private String reservaId;
+    private String servicioId;
+    private Long cantidad;
+    private String fecha;
     
 }

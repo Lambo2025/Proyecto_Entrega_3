@@ -17,104 +17,121 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uniandes.edu.co.hoteles.business.ReservaService;
+import uniandes.edu.co.hoteles.dto.ConsumoPorUsuarioRequest;
 import uniandes.edu.co.hoteles.dto.ReservaDTO;
+import uniandes.edu.co.hoteles.dto.ServicioDTO;
 
 @RestController
 @RequestMapping("/reserva")
 public class ReservaAPI {
 
-    // @Autowired
-    // private ReservaService service;
+     @Autowired
+     private ReservaService service;
 
-    // @PostMapping
-    // public ResponseEntity<Void> create(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @RequestBody ReservaDTO reserva) {
+     @PostMapping
+     public ResponseEntity<Void> create(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody ReservaDTO reserva) {
 
-    //     try {
-    //         service.create(reserva);
-    //         return new ResponseEntity<Void>(HttpStatus.CREATED);
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         try {
+             service.createReserva(reserva);
+             return new ResponseEntity<Void>(HttpStatus.CREATED);
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
 
-    // @PutMapping
-    // public ResponseEntity<Void> update(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @RequestBody ReservaDTO reserva) {
+     @PutMapping
+     public ResponseEntity<Void> update(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody ReservaDTO reserva) {
 
-    //     try {
-    //         if (service.update(reserva) != null) {
-    //             return new ResponseEntity<Void>(HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    //         }
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         try {
+             if (service.updateReserva(reserva) != null) {
+                 return new ResponseEntity<Void>(HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+             }
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }
 
-    // @DeleteMapping(value = "/{id}")
-    // public ResponseEntity<Void> delete(HttpServletRequest req,
-    //         HttpServletResponse res,
-    //         @PathVariable Long id) {
+     @DeleteMapping(value = "/{id}")
+     public ResponseEntity<Void> delete(HttpServletRequest req,
+             HttpServletResponse res,
+             @PathVariable String id) {
 
-    //     try {
+         try {
+             if (service.deleteReserva(id) != null) {
+                 return new ResponseEntity<Void>(HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+             }
 
-    //         if (service.delete(id) != null) {
-    //             return new ResponseEntity<Void>(HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    //         }
+         } catch (Exception e) {
+             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+     }
 
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+     @GetMapping(value = "/all")
+     public ResponseEntity<List<ReservaDTO>> findAll(HttpServletRequest req,
+             HttpServletResponse res) {
 
-    // }
+         try {
 
-    // @GetMapping(value = "/all")
-    // public ResponseEntity<List<ReservaDTO>> findAll(HttpServletRequest req,
-    //         HttpServletResponse res) {
+             List<ReservaDTO> reservas =  service.findAll();
 
-    //     try {
+             if (!reservas.isEmpty()) {
+                 return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
+             }
 
-    //         List<ReservaDTO> reservas =  service.findAll();
+         } catch (Exception e) {
+             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    //         if (!reservas.isEmpty()) {
-    //             return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
-    //         }
-
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-
-    // }
+     }
 
 
-    // @GetMapping(value = "/findByUser/{userDocument}")
-    // public ResponseEntity<List<ReservaDTO>> findByUser(HttpServletRequest req,
-    //         HttpServletResponse res, @PathVariable String userDocument) {
+     /*@GetMapping(value = "/findByUser/{userDocument}")
+     public ResponseEntity<List<ReservaDTO>> findByUser(HttpServletRequest req,
+             HttpServletResponse res, @PathVariable String userDocument) {
 
-    //     try {
+         try {
 
-    //         List<ReservaDTO> reservas =  service.findBookingByUserDocument(userDocument);
+             List<ReservaDTO> reservas =  service.findBookingByUserDocument(userDocument);
 
-    //         if (!reservas.isEmpty()) {
-    //             return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
-    //         } else {
-    //             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
-    //         }
+             if (!reservas.isEmpty()) {
+                 return new ResponseEntity<List<ReservaDTO>>(reservas, HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<List<ReservaDTO>>(HttpStatus.NO_CONTENT);
+             }
 
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
+         } catch (Exception e) {
+             return new ResponseEntity<List<ReservaDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
 
-    // }
+     }*/
+
+    @PostMapping(value = "/consumesByUser")
+     public ResponseEntity<Double> findConsumesByUser(HttpServletRequest req,
+             HttpServletResponse res,
+             @RequestBody ConsumoPorUsuarioRequest dto) {
+
+         try {
+
+             return new ResponseEntity<Double>( service.findBookingByUserDocument(dto), HttpStatus.OK);
+
+         } catch (Exception e) {
+            e.printStackTrace();
+             return new ResponseEntity<Double>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+
+     }
+
 
 }

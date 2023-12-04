@@ -6,12 +6,12 @@ import uniandes.edu.co.hoteles.dto.ServicioDTO;
 
 public interface ServicioService {
 
-    public void create(ServicioDTO servicio);
+    public void createServicio(ServicioDTO servicio);
     
-    public ServicioDTO update(ServicioDTO servicio);
+    public ServicioDTO updateServicio(ServicioDTO servicio);
 
-    public Long delete(Long idServicio);
+    public String deleteServicio(String idServicio);
 
     public List<ServicioDTO> findAll();
-    
+
 }

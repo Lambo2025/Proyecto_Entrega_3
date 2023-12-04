@@ -1,9 +1,12 @@
 package uniandes.edu.co.hoteles.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import uniandes.edu.co.hoteles.business.HabitacionService;
 import uniandes.edu.co.hoteles.dto.HabitacionDTO;
+import uniandes.edu.co.hoteles.dto.ReservaDTO;
 
 @RestController
 @RequestMapping("/habitacion")
@@ -37,7 +41,7 @@ public class HabitacionAPI {
 
     }
 
-   /* @PutMapping
+    @PutMapping
     public ResponseEntity<Void> update(HttpServletRequest req,
             HttpServletResponse res,
             @RequestBody HabitacionDTO habitacion) {
@@ -53,11 +57,11 @@ public class HabitacionAPI {
         }
 
     }
-
+ 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(HttpServletRequest req,
             HttpServletResponse res,
-            @PathVariable Long id) {
+            @PathVariable String id) {
 
         try {
 
@@ -71,6 +75,28 @@ public class HabitacionAPI {
             return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }*/
+    }
+
+
+
+    @GetMapping(value = "/all")
+     public ResponseEntity<List<HabitacionDTO>> findAll(HttpServletRequest req,
+             HttpServletResponse res) {
+
+         try {
+
+             List<HabitacionDTO> habitaciones =  service.findAll();
+
+             if (!habitaciones.isEmpty()) {
+                 return new ResponseEntity<List<HabitacionDTO>>(habitaciones, HttpStatus.OK);
+             } else {
+                 return new ResponseEntity<List<HabitacionDTO>>(HttpStatus.NO_CONTENT);
+             }
+
+         } catch (Exception e) {
+             return new ResponseEntity<List<HabitacionDTO>>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+
+     }
 
 }

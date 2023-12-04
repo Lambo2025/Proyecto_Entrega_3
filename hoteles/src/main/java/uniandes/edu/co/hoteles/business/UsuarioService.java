@@ -1,5 +1,8 @@
 package uniandes.edu.co.hoteles.business;
 
+import java.util.List;
+import java.util.Set;
+
 import uniandes.edu.co.hoteles.dto.UsuarioDTO;
 
 public interface UsuarioService {
@@ -8,6 +11,10 @@ public interface UsuarioService {
     
     public UsuarioDTO updateUsuario(UsuarioDTO usuario);
 
-    public Long deleteUsuario(Long idUsuario);
+    public String deleteUsuario(String idUsuario);
+
+    public List<UsuarioDTO> findAll();
+
+    public Set<UsuarioDTO> clientesExcelentes(String year);
     
 }
